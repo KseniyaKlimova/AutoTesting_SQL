@@ -18,14 +18,15 @@ public class LoginPage {
         errorNotification.shouldHave(exactText(expectedText)).shouldBe(visible);
     }
 
-    public static VerificationPage validLogin(DataHelper.AuthInfo info) {
+    public VerificationPage validLogin(DataHelper.AuthInfo info) {
         login(info);
         return new VerificationPage();
     }
 
-    public static void login(DataHelper.AuthInfo info) {
+    public void login(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
+        loginButton.click(); 
     }
 
 }

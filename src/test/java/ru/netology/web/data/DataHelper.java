@@ -30,8 +30,8 @@ public class DataHelper {
         return new AuthInfo(generateRandomLogin(), generateRandomPassword());
     }
 
-    public static VerifyCode generateRandomVerifyCode() {
-        return new VerifyCode(faker.numerify("######"));
+    public static VerificationCode generateRandomVerificationCode() {
+        return new VerificationCode(faker.numerify("######"));
     }
 
     @Value
@@ -43,7 +43,7 @@ public class DataHelper {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class VerifyCode {
+    public static class VerificationCode {
         String code;
     }
 

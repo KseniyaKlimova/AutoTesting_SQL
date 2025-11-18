@@ -1,6 +1,5 @@
 package ru.netology.web.test;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.SQLHelper;
@@ -32,8 +31,8 @@ public class BankLoginTest {
     @Test
     void shouldSuccessfullyLogin() {
         var verificationPage = loginPage.validLogin(authInfo);
-        var verifyCode = SQLHelper.getVerifyCode();
-        verificationPage.validVerify(verifyCode.getCode());
+        var verificationCode = SQLHelper.getVerificationCode();
+        verificationPage.validVerify(verificationCode.getCode());
     }
 
 }

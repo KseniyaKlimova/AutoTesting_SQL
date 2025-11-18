@@ -1,6 +1,5 @@
 package ru.netology.web.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -13,20 +12,20 @@ public class VerificationPage {
     private final SelenideElement errorNotification = $("[data-test-id='error-notification'].notification__content");
 
     public VerificationPage() {
-        codeField.shouldHave(visible);
+        codeField.shouldBe(visible);
     }
 
     public void verifyErrorNotification(String expectedText) {
         errorNotification.shouldHave(exactText(expectedText)).shouldBe(visible);
     }
 
-    public DashboardPage validVerify(String verifyCode) {
-        verify(verifyCode);
+    public DashboardPage validVerify(String verificationCode) {
+        verify(verificationCode);
         return new DashboardPage();
     }
 
-    public void verify(String verifyCode) {
-        codeField.setValue(verifyCode);
+    public void verify(String verificationCode) {
+        codeField.setValue(verificationCode);
         verifyButton.click();
     }
 

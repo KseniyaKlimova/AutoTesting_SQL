@@ -11,20 +11,19 @@ import java.sql.SQLException;
 public class SQLHelper {
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
 
-    private  SQLHelper() {
+    private SQLHelper() {
     }
 
     private static Connection getConn() throws SQLException {
-        return DriverManager.getConnection(System.getProperty("db,url"),
+        return DriverManager.getConnection(System.getProperty("db.url"),
                 "app", "pass");
     };
 
     @SneakyThrows
-    public static DataHelper.VerifyCode getVerifyCode() {
+    public static DataHelper.VerificationCode getVerificationCode() {
         var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
         try (var conn = getConn()) {
-            return QUERY_RUNNER.query(conn, codeSQL, new BeanHandler<>
-                    (DataHelper.VerifyCode.class));
+            return QUERY_RUNNER.query(conn, codeSQL, new BeanHandler<>(DataHelper.VerificationCode.class));
         }
     }
 
